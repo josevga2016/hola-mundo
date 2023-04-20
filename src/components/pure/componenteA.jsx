@@ -1,41 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { clase_Contacto } from '../components/class/clase_Contacto.class';
+import ComponenteB from './componenteB';
 
-
-class ComponenteA extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            Nombre:"jose"
-        }
-    }
-    render() {
-        return (
-            <div>
-                <h1>
-                    Hola {this.props.Nombre}
-                </h1>
-                <h1>
-                    Tu Apellido es {this.props.Apellido}
-                </h1>
-                <h1>
-                    Tu Email es {this.props.Email}
-                </h1>
-                <h1>
-                    Estas conectado: {this.props.Conectado}
-                </h1>
-            </div>
-        );
-    }
+function componenteA({ clase_Contacto }) {
+    return (
+    <div>
+    <h2>Nombre: {clase_Contacto.nombre}</h2>
+    <h3>Apellidos: {clase_Contacto.apellido}</h3>
+    <h3>Email: {clase_Contacto.email}</h3>
+    <ComponenteB estado={true} />
+    </div>
+);
 }
 
-
-ComponenteA.propTypes = {
-    Nombre: PropTypes.string,
-    Apellido: PropTypes.string,
-    Email: PropTypes.string,
-    Conectado: PropTypes.bool,
+componenteA.propTypes = {
+clase_Contacto: PropTypes.instanceOf(clase_Contacto),
 };
 
-
-export default ComponenteA;
+export default componenteA;
